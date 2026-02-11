@@ -9,7 +9,7 @@
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
-<MainMenu brand="My Brand"></MainMenu>
+<MainMenu></MainMenu>
 
 <div class="h-[200vh] bg-gradient-to-b from-slate-50 to-slate-200 p-10">
     {@render children()}
