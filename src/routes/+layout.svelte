@@ -28,7 +28,7 @@
 			href="/"
 			class="font-bold text-lg hover:text-blue-600 {isActive('/') ? 'text-blue-600' : ''}"
 		>
-			Kaset Music And Emoji
+			Artist And Emoji
 		</a>
 
 		<ul class="flex items-center gap-6 text-sm">
