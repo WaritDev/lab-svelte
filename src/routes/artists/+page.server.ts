@@ -1,17 +1,20 @@
 import type { PageServerLoad } from './$types';
+import apiClient from '$lib/server/api-clients.server';
 
 export const load: PageServerLoad = async () => {
+    try {
+        const response = await apiClient.get(`/artists`);
+        
+        let artists_list = [];
+        if (response.status === 200) {
+            artists_list = response.data.data;
+        }
 
-    // จำลองการเตรียมข้อมูล
-    const artists_list = [
-        { id: 1, name: 'Bodyslam' },
-        { id: 2, name: 'Tilly Bird' },
-        { id: 3, name: 'Three Man Down' }
-    ];
-    
-    // ส่งข้อมูลออกไปให้ +page.svelte ผ่านการ return
-    // ข้อมูลจะถูกแพ็คใส่กล่องชื่อว่า `data`
-    return {
-		        artists: artists_list
-    };
+        return {
+            artists: artists_list
+        };
+    } catch (error) {
+        console.error('Error fetching all artists:', error);
+        return { artists: [] };
+    }
 }
