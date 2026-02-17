@@ -54,7 +54,7 @@
                         type="text" 
                         name="name"
                         id="name"
-                        placeholder="ระบุชื่อศิลปิน"
+                        placeholder="Ex. Taylor Swift"
                         disabled={isSubmitting}
                         value={form?.data?.name ?? data.artist.name}
                         class="w-full rounded-2xl border border-slate-100 bg-slate-50/50 px-5 py-4 text-slate-900 outline-none transition-all focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-50/50 disabled:opacity-50"

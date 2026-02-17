@@ -12,7 +12,7 @@
 	<header class="mb-12 flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
 		<div class="space-y-1 text-center md:text-left">
 			<h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-				ศิลปินทั้งหมด
+				All Artists
 			</h1>
 		</div>
 
@@ -23,7 +23,7 @@
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:rotate-90" viewBox="0 0 20 20" fill="currentColor">
 				<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
 			</svg>
-			เพิ่มศิลปินใหม่
+			Add Artist
 		</a>
 	</header>
 
