@@ -69,9 +69,6 @@
 						<h2 class="w-full truncate text-lg font-black text-slate-800 transition-colors group-hover:text-blue-600">
 							{artist.name}
 						</h2>
-						<span class="mt-1 inline-flex items-center rounded-full bg-slate-100 px-3 py-0.5 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-							Artist Profile
-						</span>
 					</div>
 				</div>
 			{/each}
