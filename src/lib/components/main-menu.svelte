@@ -3,6 +3,9 @@
 	import { onMount } from 'svelte';
 	import { theme } from '$lib/stores/theme.svelte';
 	import ThemeToggle from '$lib/components/theme-toggle.svelte';
+	import LogoutButton from '$lib/components/logout-button.svelte';
+	
+	let user = $derived($page.data.user);
 
 	function getLinkClass(path: string) {
 		const currentPath = $page.url.pathname;
@@ -91,20 +94,20 @@
 		</ul>
 
 		<div class="flex items-center gap-4">
-			<a
-				href="/login"
-				class="hidden text-sm font-semibold text-slate-500 hover:text-slate-900 md:block"
-			>
-				Log in
-			</a>
-			<a
-				href="/signup"
-				class="rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-lg active:translate-y-0"
-			>
-				Sign up
-			</a>
+			{#if user}
+						<div>{user.name}</div>
+						<LogoutButton></LogoutButton>
+				{:else}
+						<a
+							href="/login"
+							class="hidden text-sm font-semibold text-slate-500 hover:text-slate-900 md:block"
+						>
+								Log in
+						</a>
+				{/if}
 		</div>
 
 		<ThemeToggle></ThemeToggle>
+
 	</div>
 </nav>

@@ -1,20 +1,29 @@
+import { redirect } from '@sveltejs/kit'; 
 import type { PageServerLoad } from './$types';
-import apiClient from '$lib/server/api-clients.server';
+import apiClient, { withAuth } from '$lib/server/api-clients.server' 
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ cookies }) => {
+
+    const token = cookies.get('token');
+    
+    if (!token) {
+        throw redirect(303, '/login');
+    }
     try {
-        const response = await apiClient.get(`/artists`);
-        
-        let artists_list = [];
+        const response = await apiClient.get('/artists', withAuth(token)); 
         if (response.status === 200) {
-            artists_list = response.data.data;
+            return {
+                artists: response.data.data,
+                pagination: response.data.meta
+            };
         }
-
-        return {
-            artists: artists_list
-        };
-    } catch (error) {
-        console.error('Error fetching all artists:', error);
-        return { artists: [] };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+        if (err.response?.status === 401 || err.response?.status === 403) {
+            cookies.delete('token', { path: '/' });
+            throw redirect(303, '/login');
+        }
+        
+        throw err;
     }
 }

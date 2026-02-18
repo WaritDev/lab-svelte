@@ -7,6 +7,7 @@
 	
 	const artist = $derived(data.artist);
 	let isDeleting = $state(false);
+	let user = $derived(data.user);
 
 	const handleDelete: SubmitFunction = ({ cancel }) => {
 		if (!confirm(`คุณแน่ใจหรือไม่ที่จะลบ "${artist.name}"?`)) {
@@ -69,6 +70,7 @@
 					</div>
 				</div>
 
+				{#if user && user.role === 'ADMIN'}
 				<footer class="mt-12 flex flex-wrap items-center gap-4">
 					<a 
 						href="/artists/{artist.id}/edit" 
@@ -99,6 +101,7 @@
 						</button>
 					</form>
 				</footer>
+				{/if}
 			</div>
 		</main>
 	</div>

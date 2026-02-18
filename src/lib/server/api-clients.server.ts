@@ -10,4 +10,13 @@ const apiClient = axios.create({
     timeout: 10000
 });
 
+export const withAuth = (token: string | undefined) => {
+    if (!token) return {};
+    return {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    };
+};
+
 export default apiClient;
