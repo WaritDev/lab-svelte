@@ -27,6 +27,13 @@ export const getEcho = (): Echo<'reverb'> | null => {
             forceTLS: (env.PUBLIC_REVERB_SCHEME ?? 'https') === 'https',
             enabledTransports: ['ws', 'wss'],
             disableStats: true,
+            authEndpoint: '/api/broadcasting/auth',
+			auth: {
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                }
+			}
         });
     }
 
